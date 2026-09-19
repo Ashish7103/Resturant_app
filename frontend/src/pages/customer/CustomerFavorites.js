@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { FavoritesContext } from "./context/FavoritesContext";
-import { Heart, ShoppingCart } from "lucide-react";
+import { ShoppingCart } from "lucide-react";
 import { CartContext } from "./context/CartContext";
 
 function CustomerFavorites() {

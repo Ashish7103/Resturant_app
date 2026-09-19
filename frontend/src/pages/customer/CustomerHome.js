@@ -1,6 +1,6 @@
 import React from "react";
 import download from "../../assets/download.png";
-import { Truck, MoveRight, Clock, Star, Package, Heart, ShoppingCart, ArrowRight } from "lucide-react";
+import { Truck, MoveRight, Clock, Star, Package, Heart, ShoppingCart } from "lucide-react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";

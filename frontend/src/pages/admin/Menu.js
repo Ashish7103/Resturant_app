@@ -1,5 +1,4 @@
 import React, { useContext, useState, useEffect } from "react";
-import { useOutletContext } from "react-router-dom";
 import { MenuContext } from "../admin/contex/MenuContext";
 import axios from "axios";
 import { Trash2, EditIcon } from "lucide-react";

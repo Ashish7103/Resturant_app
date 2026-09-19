@@ -43,15 +43,15 @@ function Footer() {
                     <h3 className="font-semibold mb-4">Follow Us</h3>
 
                     <div className="flex gap-4 text-gray-500">
-                        <a href="#" className="hover:text-[#EF6E2F]">
+                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#EF6E2F]">
                             <Facebook size={20} />
                         </a>
 
-                        <a href="#" className="hover:text-[#EF6E2F]">
+                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#EF6E2F]">
                             <Instagram size={20} />
                         </a>
 
-                        <a href="#" className="hover:text-[#EF6E2F]">
+                        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#EF6E2F]">
                             <Twitter size={20} />
                         </a>
                     </div>
