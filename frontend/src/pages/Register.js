@@ -23,7 +23,8 @@ function Register() {
             return;
         }
         setLoading(true);
-        axios.post('http://localhost:5000/api/users/register', { name, email, password, role })
+        const API_BASE = process.env.REACT_APP_API_URL || 'https://resturant-app-backend-9dmb.onrender.com/api';
+        axios.post(`${API_BASE}/users/register`, { name, email, password, role })
             .then(response => {
                 console.log('Registration successful:', response.data);
                 Toast.success("Registration successful! Please login.");

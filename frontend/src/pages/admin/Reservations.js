@@ -16,13 +16,15 @@ const Reservations = () => {
     Cancelled: "text-red-600",
   };
 
+  const API_BASE = process.env.REACT_APP_API_URL || 'https://resturant-app-backend-9dmb.onrender.com/api';
+
   // ✅ Fetch reservations (with optional loader)
   const fetchReservations = async (showLoader = false) => {
     if (showLoader) setLoading(true);
 
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/reservations/",
+        `${API_BASE}/reservations/`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -66,7 +68,7 @@ const Reservations = () => {
     setUpdatingId(id);
     try {
       await axios.put(
-        `http://localhost:5000/api/reservations/${id}/status`,
+        `${API_BASE}/reservations/${id}/status`,
         { status: newStatus },
         {
           headers: { Authorization: `Bearer ${token}` },

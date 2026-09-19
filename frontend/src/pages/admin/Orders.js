@@ -135,12 +135,14 @@ function Orders() {
   const token = localStorage.getItem("token");
   const statusOptions = ["Pending", "Preparing", "Delivered", "Cancelled"];
 
+  const API_BASE = process.env.REACT_APP_API_URL || 'https://resturant-app-backend-9dmb.onrender.com/api';
+
   // Fetch orders
   const fetchOrders = async () => {
     setLoading(true);
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/orders/",
+        `${API_BASE}/orders/`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       setOrders(res.data);
@@ -156,7 +158,7 @@ function Orders() {
     setUpdatingId(orderId);
     try {
       await axios.put(
-        `http://localhost:5000/api/orders/${orderId}/status`,
+        `${API_BASE}/orders/${orderId}/status`,
         { status },
         { headers: { Authorization: `Bearer ${token}` } }
       );

@@ -19,7 +19,8 @@ function Login() {
       return;
     }
     setLoading(true);
-    axios.post('http://localhost:5000/api/users/login', { email, password })
+    const API_BASE = process.env.REACT_APP_API_URL || 'https://resturant-app-backend-9dmb.onrender.com/api';
+    axios.post(`${API_BASE}/users/login`, { email, password })
       .then(response => {
         console.log('Login successful:', response.data);
 

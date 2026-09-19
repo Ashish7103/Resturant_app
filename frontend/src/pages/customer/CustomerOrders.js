@@ -10,13 +10,16 @@ const CustomerOrders = () => {
   // { [menuItemId]: { comment: "", rating: 5, loading: false, submitted: false } }
 
   const token = localStorage.getItem("token");
-  const currentUserId = JSON.parse(localStorage.getItem("user"))?._id;
+  const user = JSON.parse(localStorage.getItem("user"));
+  const currentUserId = user?._id;
+
+  const API_BASE = process.env.REACT_APP_API_URL || 'https://resturant-app-backend-9dmb.onrender.com/api';
 
   const fetchOrders = async () => {
     try {
       setLoading(true);
 
-      const res = await axios.get("http://localhost:5000/api/orders/my", {
+      const res = await axios.get(`${API_BASE}/orders/my`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -32,24 +35,34 @@ const CustomerOrders = () => {
 
           try {
             const reviewRes = await axios.get(
-              `http://localhost:5000/api/reviews/${menuItemId}`,
+              `${API_BASE}/reviews/${menuItemId}`,
               { headers: { Authorization: `Bearer ${token}` } }
             );
 
             // Find review by current user
             const myReview = reviewRes.data.find(
-              (r) => r.user?._id === currentUserId
+              (r) => r.user?._id === user?._id || r.user === user?._id
             );
 
             const key = `${order._id}_${menuItemId}`;
-            initReviews[key] = {
-              comment: myReview?.comment || "",
-              rating: myReview?.rating || 5,
-              submitted: !!myReview,
-              loading: false,
-            };
-          } catch (err) {
-            console.error("Failed to fetch review for", menuItemId, err);
+
+            if (myReview) {
+              initReviews[key] = {
+                comment: myReview.comment,
+                rating: myReview.rating,
+                submitted: true,
+                loading: false,
+              };
+            } else {
+              initReviews[key] = {
+                comment: "",
+                rating: 5,
+                submitted: false,
+                loading: false,
+              };
+            }
+          } catch (e) {
+            console.error(e);
           }
         }
       }
@@ -69,7 +82,7 @@ const CustomerOrders = () => {
   const fetchOrdersOnly = async () => {
   try {
     const res = await axios.get(
-      "http://localhost:5000/api/orders/my",
+      `${API_BASE}/orders/my`,
       {
         headers: { Authorization: `Bearer ${token}` },
       }
@@ -109,7 +122,7 @@ useEffect(() => {
       handleReviewChange(key, "loading", true);
 
       await axios.post(
-        `http://localhost:5000/api/reviews/${menuItemId}`,
+        `${API_BASE}/reviews/${menuItemId}`,
         { comment, rating: Number(rating), orderId },
         { headers: { Authorization: `Bearer ${token}` } }
       );

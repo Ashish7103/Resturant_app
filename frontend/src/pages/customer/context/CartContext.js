@@ -10,11 +10,13 @@ export const CartProvider = ({ children }) => {
   const userId = user?._id;
   const token = localStorage.getItem("token");
 
+const API_BASE = process.env.REACT_APP_API_URL || 'https://resturant-app-backend-9dmb.onrender.com/api';
+
   const fetchCart = async () => {
     const token = localStorage.getItem("token");
 
     try {
-      const res = await axios.get("http://localhost:5000/api/cards/items", {
+      const res = await axios.get(`${API_BASE}/cards/items`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -38,7 +40,7 @@ export const CartProvider = ({ children }) => {
       const newQuantity = existingItem ? existingItem.quantity + 1 : 1;
 
       const res = await axios.post(
-        "http://localhost:5000/api/cards/add",
+        `${API_BASE}/cards/add`,
         {
           menuItemId: item._id,
           quantity: newQuantity,

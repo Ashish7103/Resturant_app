@@ -12,14 +12,16 @@ function CustomerHome() {
   const [reviews, setReviews] = useState({});
   const { toggleFavorite, isFavorite } = useContext(FavoritesContext);
   const { addToCart } = useContext(CartContext);
+const API_BASE = process.env.REACT_APP_API_URL || 'https://resturant-app-backend-9dmb.onrender.com/api';
+
   const fetchMenu = async () => {
-    const response = await axios.get("http://localhost:5000/api/menu/get");
+    const response = await axios.get(`${API_BASE}/menu/get`);
     setMenuItems(response.data);
   };
   const fetchReviews = async (menuId) => {
   try {
     const res = await axios.get(
-      `http://localhost:5000/api/reviews/${menuId}`
+      `${API_BASE}/reviews/${menuId}`
     );
 
     setReviews((prev) => ({

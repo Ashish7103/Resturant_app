@@ -8,6 +8,8 @@ function CustomerCard() {
   const { cartItems, fetchCart } = useContext(CartContext);
   const [loadingId, setLoadingId] = useState(null);
   const navigate = useNavigate();
+const API_BASE = process.env.REACT_APP_API_URL || 'https://resturant-app-backend-9dmb.onrender.com/api';
+
   const updateQuantity = async (menuItemId, newQuantity) => {
     if (newQuantity < 1) return;
 
@@ -16,7 +18,7 @@ function CustomerCard() {
       const token = localStorage.getItem("token");
 
       await axios.put(
-        `http://localhost:5000/api/cards/update/${menuItemId}`,
+        `${API_BASE}/cards/update/${menuItemId}`,
         { quantity: newQuantity },
         {
           headers: {
@@ -38,7 +40,7 @@ function CustomerCard() {
       setLoadingId(menuItemId);
       const token = localStorage.getItem("token");
 
-      await axios.delete(`http://localhost:5000/api/cards/delete/${menuItemId}`, {
+      await axios.delete(`${API_BASE}/cards/delete/${menuItemId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

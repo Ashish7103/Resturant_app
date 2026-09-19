@@ -75,7 +75,8 @@ const CheckoutForm = () => {
         paymentMethodId: paymentMethod.id, // send Stripe payment method to backend
       };
 
-      const res = await axios.post("http://localhost:5000/api/orders/", orderPayload, {
+      const API_BASE = process.env.REACT_APP_API_URL || 'https://resturant-app-backend-9dmb.onrender.com/api';
+      const res = await axios.post(`${API_BASE}/orders/`, orderPayload, {
         headers: { Authorization: `Bearer ${token}` },
       });
 

@@ -15,13 +15,15 @@ export const FavoritesProvider = ({ children }) => {
     };
   };
 
+const API_BASE = process.env.REACT_APP_API_URL || 'https://resturant-app-backend-9dmb.onrender.com/api';
+
   const fetchFavorites = async () => {
     try {
       const token = localStorage.getItem("token");
       if (!token) return;
 
       const response = await axios.get(
-        "http://localhost:5000/api/favorites/my",
+        `${API_BASE}/favorites/my`,
         getAuthConfig()
       );
 
@@ -47,7 +49,7 @@ export const FavoritesProvider = ({ children }) => {
   const addFavorite = async (itemId) => {
     try {
       await axios.post(
-        `http://localhost:5000/api/favorites/${itemId}`,
+        `${API_BASE}/favorites/${itemId}`,
         {},
         getAuthConfig()
       );
@@ -60,7 +62,7 @@ export const FavoritesProvider = ({ children }) => {
   const removeFavorite = async (itemId) => {
     try {
       await axios.delete(
-        `http://localhost:5000/api/favorites/${itemId}`,
+        `${API_BASE}/favorites/${itemId}`,
         getAuthConfig()
       );
 

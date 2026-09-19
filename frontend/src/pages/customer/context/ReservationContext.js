@@ -8,11 +8,13 @@ export const ReservationProvider = ({ children }) => {
 
   const token = localStorage.getItem("token");
 
+const API_BASE = process.env.REACT_APP_API_URL || 'https://resturant-app-backend-9dmb.onrender.com/api';
+
   // ✅ CREATE
   const createReservation = async (data) => {
     try {
       await axios.post(
-        "http://localhost:5000/api/reservations/",
+        `${API_BASE}/reservations/`,
         data,
         {
           headers: {
@@ -30,7 +32,7 @@ export const ReservationProvider = ({ children }) => {
   const fetchReservations = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/reservations/my",
+        `${API_BASE}/reservations/my`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -47,7 +49,7 @@ export const ReservationProvider = ({ children }) => {
   const updateReservation = async (id, updatedData) => {
     try {
       await axios.put(
-        `http://localhost:5000/api/reservations/${id}`,
+        `${API_BASE}/reservations/${id}`,
         updatedData,
         {
           headers: {

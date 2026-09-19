@@ -19,12 +19,13 @@ const Dashboard = () => {
   setLoading(true);
   try {
     const headers = { headers: { Authorization: `Bearer ${token}` } };
+    const API_BASE = process.env.REACT_APP_API_URL || 'https://resturant-app-backend-9dmb.onrender.com/api';
     const [orders, users, menu, reviews, reservations] = await Promise.all([
-      axios.get("http://localhost:5000/api/orders/total", headers),
-      axios.get("http://localhost:5000/api/users/total", headers),
-      axios.get("http://localhost:5000/api/menu/total", headers),
-      axios.get("http://localhost:5000/api/reviews/total", headers),
-      axios.get("http://localhost:5000/api/reservations/total", headers),
+      axios.get(`${API_BASE}/orders/total`, headers),
+      axios.get(`${API_BASE}/users/total`, headers),
+      axios.get(`${API_BASE}/menu/total`, headers),
+      axios.get(`${API_BASE}/reviews/total`, headers),
+      axios.get(`${API_BASE}/reservations/total`, headers),
     ]);
 
     setStats({

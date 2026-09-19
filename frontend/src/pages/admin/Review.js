@@ -10,11 +10,13 @@ function Review() {
 
   const token = localStorage.getItem("token");
 
+  const API_BASE = process.env.REACT_APP_API_URL || 'https://resturant-app-backend-9dmb.onrender.com/api';
+
   // ✅ Fetch Reviews
   const fetchReviews = async () => {
     setLoading(true);
     try {
-      const res = await axios.get("http://localhost:5000/api/reviews/", {
+      const res = await axios.get(`${API_BASE}/reviews/`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setReviews(res.data);
@@ -29,7 +31,7 @@ function Review() {
   // ✅ Delete Review
   const deleteReview = async () => {
     try {
-      await axios.delete(`http://localhost:5000/api/reviews/${deleteId}`, {
+      await axios.delete(`${API_BASE}/reviews/${deleteId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 

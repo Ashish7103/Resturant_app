@@ -34,6 +34,8 @@ function Menu() {
     }));
   };
 
+  const API_BASE = process.env.REACT_APP_API_URL || 'https://resturant-app-backend-9dmb.onrender.com/api';
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -42,7 +44,7 @@ function Menu() {
 
       if (selectedId) {
         await axios.put(
-          `http://localhost:5000/api/menu/update/${selectedId}`,
+          `${API_BASE}/menu/update/${selectedId}`,
           formData,
           {
             headers: {
@@ -54,7 +56,7 @@ function Menu() {
         Toast.success("Menu item updated successfully");
       } else {
         await axios.post(
-          "http://localhost:5000/api/menu/create",
+          `${API_BASE}/menu/create`,
           formData,
           {
             headers: {
@@ -108,7 +110,7 @@ function Menu() {
   const deleteMenuItem = async (id) => {
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`http://localhost:5000/api/menu/delete/${id}`, {
+      await axios.delete(`${API_BASE}/menu/delete/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -123,7 +125,7 @@ function Menu() {
   const fetchMenuItems = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.get("http://localhost:5000/api/menu/get", {
+      const res = await axios.get(`${API_BASE}/menu/get`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -137,7 +139,7 @@ function Menu() {
   const updateMenuItem = async (id, updatedData) => {
     try {
       const token = localStorage.getItem("token");
-      await axios.put(`http://localhost:5000/api/menu/update/${id}`, updatedData, {
+      await axios.put(`${API_BASE}/menu/update/${id}`, updatedData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
