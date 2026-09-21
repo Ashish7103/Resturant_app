@@ -34,7 +34,7 @@ function Footer() {
                 <div>
                     <h3 className="font-semibold mb-4">Contact</h3>
                     <p className="flex items-center text-xs text-gray-500"><MapPin size={16} className="mr-2" /> 123 Food Street</p>
-                    <p className="flex items-center text-xs text-gray-500"><Phone size={16} className="mr-2" /> +92 98765 43210</p>
+                    <p className="flex items-center text-xs text-gray-500"><Phone size={16} className="mr-2" /> +63 8664 4915</p>
                     <p className="flex items-center text-xs text-gray-500"><Mail  size={16} className="mr-2" /> support@foodhub.com</p>
                 </div>
 
