@@ -7,7 +7,7 @@ A production-ready, full-stack restaurant management platform built with Node.js
 
 ## 🚀 Live Demo & Deployment
 
-- 🌐 **Frontend App (Netlify)**: [Live Frontend](https://remarkable-babka-0dbfaa.netlify.app/)
+- 🌐 **Frontend App (Netlify)**: [Live Frontend](https://restromaniahub.netlify.app/)
 - ⚙️ **Backend API (Render)**: `https://resturant-app-backend-9dmb.onrender.com/api`
 
 ---
