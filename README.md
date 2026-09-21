@@ -2,7 +2,7 @@
 
 A production-ready, full-stack restaurant management platform built with the MERN stack. Features a sophisticated **Admin Dashboard** for inventory and order management, complemented by an intuitive **User Interface** for seamless food ordering with integrated payment solutions.
 
-> **[Live Demo](https://remarkable-babka-0dbfaa.netlify.app/)** | **[Video Walkthrough](https://drive.google.com/file/d/153OBLRB7-Ey3nS_Z08EEEvJZyuQc75rP/view?usp=sharing)**
+> **[Live Demo](https://restromaniahub.netlify.app/)** | **[Video Walkthrough](https://drive.google.com/file/d/153OBLRB7-Ey3nS_Z08EEEvJZyuQc75rP/view?usp=sharing)**
 
 ---
 
@@ -1073,7 +1073,10 @@ For issues and questions:
 **Last Updated:** May 29, 2026 | **Status:** Active & Maintained ✅
 
 **⭐ If you find this project helpful, please consider giving it a star!**
-#   r e s t r o r e n t _ a p p  
- #   r e s t r o _ a p p  
- #   r e s t r o _ a p p  
+#   r e s t r o r e n t _ a p p 
+ 
+ #   r e s t r o _ a p p 
+ 
+ #   r e s t r o _ a p p 
+ 
  
