@@ -23,7 +23,11 @@ app.use("/api/reviews", reviewRoutes);
 app.use("/api/reservations", reservationRoutes);
 
 app.get('/', (req, res) => {
-    res.send('Restaurant API is running...');
+    res.status(200).send('Restaurant API is running...');
+});
+
+app.get('/health', (req, res) => {
+    res.status(200).json({ status: 'OK', uptime: process.uptime() });
 });
 
 const port=process.env.PORT || 5000;
